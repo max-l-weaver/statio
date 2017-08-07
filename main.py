@@ -6,22 +6,23 @@ from statio import SingleResource, WriteToFile
 
 TERRAFORM_ROLES_FOLDER = os.environ.get('TERRAFORM_ROLES_FOLDER')
 
-parser = argparse.ArgumentParser(description='TODO')
+parser = argparse.ArgumentParser(description='Converts tfstate files into HCL')
 parser.add_argument(
-        '--tfstate', help='TODO')
+        '--tfstate', help='location of your tfstate file')
 parser.add_argument(
-        '--output-dir', '-o', help='TODO')
+        '--output-dir', '-o', help='output directory')
 
 args = parser.parse_args()
 
-tf_input_file = TERRAFORM_ROLES_FOLDER + args.tfstate
-tf_output_file = TERRAFORM_ROLES_FOLDER + args.output_dir
-
 if args.tfstate is not None:
+
+    tf_input_file = TERRAFORM_ROLES_FOLDER + args.tfstate
+    tf_output_file = TERRAFORM_ROLES_FOLDER + args.output_dir
+
     statio_input = SingleResource(tf_input_file, 
                                   tf_output_file)
 else:
-    raise EnvironmentError("TODo")
+    raise EnvironmentError("Issues with input file and/or output dir")
 
 def clean_up():
     delete = input('Conversion complete! \
