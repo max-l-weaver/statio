@@ -4,6 +4,7 @@ Currently only works with datadog module tfstate files, and only one at a time.
 
 ## The Dream
 1. Make it less hideous
+1. Tests
 2. Put some proper error checking in
 3. expand it so it can take a tfstate file containing more than one resource
 4. Have it create folders too, so your whole infra can be created
