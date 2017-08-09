@@ -25,7 +25,7 @@ class WriteToFile():
     
     def write_message_to_module(self):
         with open(self.module_file, "a") as module_file:
-            module_file.write('\noutput "{name}" {{'.format(name=self.resource_name))
+            module_file.write('\n\noutput "{name}" {{'.format(name=self.resource_name))
             module_file.write('\n  value = <<__EOF__\n{message}__EOF__\n}}'
                               .format(message=self.attributes["message"]))
         

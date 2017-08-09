@@ -40,11 +40,16 @@ class SingleResource():
                                         ['primary'] \
                                         ['attributes']
         unstripped_resource_name = self.attributes_dict["name"]                                       
-        resource_name_strip = re.sub('[:\{\}.*]',
-                                     '',
-                                     unstripped_resource_name)
+        resource_name_comparison = unstripped_resource_name \
+                                   .replace(">", "gt") \
+                                   .replace("<", "lt")
 
-        rem_spaces = resource_name_strip.replace(" ", "_")
+        resource_name_strip = re.sub('[,:%\{\}.*()\-!\'#]',
+                                     '',
+                                     resource_name_comparison)
+
+        rem_spaces = resource_name_strip.replace(" ", "_").replace("__", "_")
+
         self.resource_name = rem_spaces.lower()
 
         self.check_for_tags()
